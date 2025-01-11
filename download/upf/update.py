@@ -233,8 +233,10 @@ class TestRegularExpression(unittest.TestCase):
 
 if __name__ == '__main__':
 
-    fdb_psp = '/root/abacus-develop/pseudopotentials/database.json'
-    frules  = '/root/abacus-develop/pseudopotentials/rules.json'
+    # for more information about the rules and tags, please read
+    # the documentation of the package.
+    fdb_psp = '/path/to/your/database/file'
+    frules  = '/path/to/your/rules/file'
     
     # run
     unlabelled = main('local_pslib_update', fdb_psp, frules)

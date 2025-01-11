@@ -92,8 +92,15 @@ class TestAPNS2EcutABACUS(unittest.TestCase):
                 result.append(temp)
                 ecut_conv = stpc.ecuts[stpc.iconv]
                 pp = stpc.pp(as_list=True)
-                # assert len(pp) == 1, "The pseudopotential should be unique for each test case"
-                # update_ecutwfc(pp[0], ecut_conv)
+                
+                # NOTE: for some hard-to-converge cases, other auxillary elements may be
+                #       added to the pseudopotential list. In this case, the number of 
+                #       psp is no longer 1. For this case, comment out the following
+                #       assertion
+                assert len(pp) == 1, "The pseudopotential should be unique for each test case"
+
+                # update the local database if needed.
+                update_ecutwfc(pp[0], ecut_conv)
 
         with open(os.path.basename(self.jobpath)+".json", "w") as f:
             json.dump(result, f, indent=4)
